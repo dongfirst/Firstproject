@@ -1,18 +1,11 @@
-import os
 import torch
-import torchvision
 import torch.nn as nn
-import torch.nn.functional as F
 import torch.optim as optim
-
 from torchvision import models, datasets, transforms
-import torch.utils.data as tud
-import numpy as np
 from torch.utils.data import Dataset, DataLoader, SubsetRandomSampler
 from PIL import Image
 import matplotlib.pyplot as plt
 import warnings
-
 warnings.filterwarnings("ignore")
 
 device = torch.device("cuda:0" if torch.cuda.is_available() else 'cpu')
