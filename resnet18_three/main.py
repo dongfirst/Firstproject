@@ -16,7 +16,7 @@ import warnings
 warnings.filterwarnings("ignore")
 
 device = torch.device("cuda:0" if torch.cuda.is_available() else 'cpu')
-n_classes = 3  # 几种分类的
+n_classes = 4  # 几种分类的
 preteain = False  # 是否下载使用训练参数 有网true 没网false
 epoches = 10  # 训练的轮次
 traindataset = datasets.ImageFolder(root='./dataset/train/', transform=transforms.Compose([
@@ -106,7 +106,7 @@ transform = transforms.Compose([
     transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
 ])
 
-path = r'D:\PycharmProjects\resnet18_three\dataset\test\leopard\img_test_850.jpg'  # 测试图片路径
+path = r'D:\repo_local\Firstproject\resnet18_three\dataset\test\monkey\img_test_895.jpg'  # 测试图片路径
 model.eval()
 img = Image.open(path)
 img_p = transform(img).unsqueeze(0).to(device)
@@ -116,5 +116,5 @@ p = 100 * nn.Softmax(dim=1)(output).detach().cpu().numpy()[0]
 print('该图像预测类别为:', classes[pred])
 
 # 三分类
-print('类别{}的概率为{:.2f}%，类别{}的概率为{:.2f}%，类别{}的概率为{:.2f}%'.format(classes[0], p[0], classes[1], p[1],
-                                                                                 classes[2], p[2]))
+print('类别{}的概率为{:.2f}%，类别{}的概率为{:.2f}%，类别{}的概率为{:.2f}%，类别{}的概率为{:.2f}%'.format(classes[0], p[0], classes[1], p[1],
+                                                                                 classes[2], p[2], classes[3], p[3]))
